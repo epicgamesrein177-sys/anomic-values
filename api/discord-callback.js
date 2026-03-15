@@ -17,6 +17,13 @@ const adminAuth = getAuth();
 const db        = getFirestore();
 
 export default async function handler(req, res) {
+  console.log("--- DEBUGGING ENVIRONMENT VARIABLES ---");
+  console.log("FIREBASE_PROJECT_ID:", process.env.FIREBASE_PROJECT_ID);
+  console.log("FIREBASE_CLIENT_EMAIL:", process.env.FIREBASE_CLIENT_EMAIL);
+  console.log("DISCORD_CLIENT_SECRET exists:", !!process.env.DISCORD_CLIENT_SECRET);
+  console.log("FIREBASE_PRIVATE_KEY exists:", !!process.env.FIREBASE_PRIVATE_KEY);
+  console.log("--- END DEBUGGING ---");
+
   const { code } = req.query;
   if (!code) return res.status(400).send("Missing code");
 
