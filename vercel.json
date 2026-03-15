@@ -1,7 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/auth/discord", "destination": "/api/discord-auth.js" },
-    { "source": "/auth/discord/callback", "destination": "/api/discord-callback.js" },
-    { "source": "/(.*)", "destination": "/public/index.html" }
-  ]
-}
