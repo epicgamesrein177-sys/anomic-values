@@ -289,7 +289,7 @@
         <div class="bg-glass-card" style="border-radius: 24px; padding: 48px; text-align: center; max-width: 420px; width: 100%; margin: 24px;">
             <h2 class="text-3xl font-bold gradient-title" style="margin-bottom: 16px; animation: gradientShift 3s linear infinite;">Welcome!</h2>
             <p style="color: #9ca3af; margin-bottom: 32px;">Log in with Discord to continue to Anomic Values.</p>
-            <a href="https://discord.com/oauth2/authorize?client_id=1482531786331525241&response_type=code&redirect_uri=https://anomic-values.vercel.app/auth/discord/callback&scope=identify" id="discord-login-btn" style="
+            <a href="/auth/discord" id="discord-login-btn" style="
                 display: inline-flex;
                 align-items: center;
                 gap: 12px;
@@ -1618,7 +1618,6 @@
             }
         });
 
-        function loginWithDiscord() { window.location.href = '/auth/discord'; }
         function signOut()          { auth.signOut(); }
 
         // ═══════════════════════════════════════════
