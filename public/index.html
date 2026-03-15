@@ -284,6 +284,29 @@
 </head>
 <body class="antialiased">
 
+    <!-- ── Login Modal ── -->
+    <div id="login-modal" style="display: none; position: fixed; inset: 0; z-index: 100000; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center;">
+        <div class="bg-glass-card" style="border-radius: 24px; padding: 48px; text-align: center; max-width: 420px; width: 100%; margin: 24px;">
+            <h2 class="text-3xl font-bold gradient-title" style="margin-bottom: 16px; animation: gradientShift 3s linear infinite;">Welcome!</h2>
+            <p style="color: #9ca3af; margin-bottom: 32px;">Log in with Discord to continue to Anomic Values.</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1482531786331525241&response_type=code&redirect_uri=https://anomic-values.vercel.app/auth/discord/callback&scope=identify" id="discord-login-btn" style="
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                background: #5865F2;
+                color: white;
+                padding: 14px 28px;
+                border-radius: 999px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            ">
+                <i data-lucide="log-in"></i>
+                Log In with Discord
+            </a>
+        </div>
+    </div>
+
     <!-- ── Loading Screen ── -->
     <div id="loader">
         <canvas id="loader-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
@@ -314,6 +337,7 @@
             ">Get Started →</button>
         </div>
     </div>
+    <div id="main-content" style="display: none;">
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-glass py-4 px-6 md:px-12 flex items-center justify-between">
         <div class="flex items-center space-x-2">
@@ -1581,9 +1605,16 @@
                 if (avatarArea) avatarArea.style.display = 'flex';
                 if (avatarImg)  avatarImg.src            = user.photoURL || '';
                 if (nameEl)     nameEl.innerText         = user.displayName || 'User';
+
+                document.getElementById('login-modal').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                checkCooldown();
             } else {
                 if (loginBtn)   loginBtn.style.display   = 'flex';
                 if (avatarArea) avatarArea.style.display = 'none';
+
+                document.getElementById('login-modal').style.display = 'flex';
+                document.getElementById('main-content').style.display = 'none';
             }
         });
 
@@ -1904,5 +1935,6 @@
             closeMarketPicker();
         }
     </script>
-</body>
+    </div>
+    </body>
 </html>
